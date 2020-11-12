@@ -1,0 +1,39 @@
+---
+resourceType: Questionnaire
+id: patient-information
+item:
+  - text: First Name
+    type: string
+    linkId: first-name
+    required: true
+    initialExpression:
+      language: text/fhirpath
+      expression: '%LaunchPatient.name.given.first()'
+  - text: Middle Name
+    type: string
+    linkId: middle-name
+    initialExpression:
+      language: text/fhirpath
+      expression: '%LaunchPatient.name.given[1]'
+  - text: Last Name
+    type: string
+    linkId: last-name
+    required: true
+    initialExpression:
+      language: text/fhirpath
+      expression: '%LaunchPatient.name.family.first()'
+  - text: Date of Birth
+    type: date
+    linkId: date-of-birth
+    required: true
+    initialExpression:
+      language: text/fhirpath
+      expression: '%LaunchPatient.birthDate'
+status: active
+mapping:
+  - id: patient-extract
+    resourceType: Mapping
+launchContext:
+  - name: LaunchPatient
+    type: Patient
+    description: The patient that is to be used to pre-populate the form

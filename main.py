@@ -8,9 +8,10 @@ from sentry_sdk.integrations.aiohttp import AioHttpIntegration
 from aidbox_python_sdk.main import create_app as _create_app
 
 # Don't remove these imports
-from app.sdk import sdk_settings, sdk
+from app.sdk import sdk_settings, sdk 
 import app.subscriptions
-
+import app.sdc_demo
+import app.sdc.operations
 
 
 coloredlogs.install(

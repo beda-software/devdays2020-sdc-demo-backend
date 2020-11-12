@@ -9,7 +9,10 @@ from app.contrib.sdk_ext import (
     load_sql_migrations,
 )
 
+from app.sdc import manifest as sdc_manifest
+
 meta_resources = merge_resources(
+    sdc_manifest.meta_resources,
     {
         "Client": {
             "SPA": {"secret": "123456", "grant_types": ["password"]},
@@ -23,7 +26,7 @@ meta_resources = merge_resources(
                 "grant_types": ["authorization_code"],
             },
         },
-        
+
         "AidboxConfig": {
             "provider": {
                 "provider": {"console": {"type": "console"}, "default": "console"},
@@ -72,7 +75,7 @@ seeds = merge_resources(
         "Practitioner": {
             "superadmin": {
                 "name": [{"given": ["Super"], "family": "Admin"}],
-                "telecom": [{"system": "email", "value": config.app_superadmin_email,}],
+                "telecom": [{"system": "email", "value": config.app_superadmin_email, }],
             },
         },
     }
@@ -82,7 +85,7 @@ seeds = merge_resources(
 )
 
 entities = {
-    
+
 }
 
 migrations = load_sql_migrations(os.path.join(config.root_dir, "resources/migrations"))
