@@ -52,6 +52,7 @@ deploy:
     - cd ./chart
     - ./deploy.sh $CI_COMMIT_SHA
   only:
-    - master
-    - staging
-    - develop
+    - temporary-skipped
+    #- master
+    #- staging
+    #- develop
