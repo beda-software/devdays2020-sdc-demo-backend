@@ -19,6 +19,7 @@ build_test_release:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
   script:
     # BUILD
+    - git submodule update --init
     - echo -e "section_start:`date +%s`:build_section\r\e[0KBuild"
     - docker pull $CACHE_IMAGE || true
     - docker build --cache-from $CACHE_IMAGE --tag $BUILD_IMAGE .
