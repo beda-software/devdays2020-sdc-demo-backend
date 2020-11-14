@@ -29,6 +29,12 @@ item:
     initialExpression:
       language: text/fhirpath
       expression: '%LaunchPatient.birthDate'
+  - text: ID
+    type: string
+    linkId: patientId
+    initialExpression:
+      language: text/fhirpath
+      expression: '%LaunchPatient.id'
 status: active
 mapping:
   - id: patient-extract
