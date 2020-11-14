@@ -22,24 +22,24 @@ async def test_live_health_check(client):
 
 async def test_database_isolation__1(sdk, safe_db):
     patients = await sdk.client.resources("Patient").fetch_all()
-    assert len(patients) == 0
-
-    patient = sdk.client.resource("Patient")
-    await patient.save()
-
-    patients = await sdk.client.resources("Patient").fetch_all()
     assert len(patients) == 1
-
-
-async def test_database_isolation__2(sdk, safe_db):
-    patients = await sdk.client.resources("Patient").fetch_all()
-    assert len(patients) == 0
-
-    patient = sdk.client.resource("Patient")
-    await patient.save()
 
     patient = sdk.client.resource("Patient")
     await patient.save()
 
     patients = await sdk.client.resources("Patient").fetch_all()
     assert len(patients) == 2
+
+
+async def test_database_isolation__2(sdk, safe_db):
+    patients = await sdk.client.resources("Patient").fetch_all()
+    assert len(patients) == 1
+
+    patient = sdk.client.resource("Patient")
+    await patient.save()
+
+    patient = sdk.client.resource("Patient")
+    await patient.save()
+
+    patients = await sdk.client.resources("Patient").fetch_all()
+    assert len(patients) == 3
