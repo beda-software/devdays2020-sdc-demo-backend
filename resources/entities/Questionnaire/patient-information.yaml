@@ -32,6 +32,7 @@ item:
   - text: ID
     type: string
     linkId: patientId
+    hidden: true
     initialExpression:
       language: text/fhirpath
       expression: '%LaunchPatient.id'
