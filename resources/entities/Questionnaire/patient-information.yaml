@@ -5,7 +5,6 @@ item:
   - text: First Name
     type: string
     linkId: first-name
-    required: true
     initialExpression:
       language: text/fhirpath
       expression: '%LaunchPatient.name.given.first()'
@@ -18,14 +17,12 @@ item:
   - text: Last Name
     type: string
     linkId: last-name
-    required: true
     initialExpression:
       language: text/fhirpath
       expression: '%LaunchPatient.name.family.first()'
   - text: Date of Birth
     type: date
     linkId: date-of-birth
-    required: true
     initialExpression:
       language: text/fhirpath
       expression: '%LaunchPatient.birthDate'
