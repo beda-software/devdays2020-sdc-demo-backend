@@ -1,19 +1,27 @@
 ---
-resourceType: Mapping
-id: demo-2
 body:
   type: transaction
-  resourceType: Bundle
   entry:
     - request:
-        url: "$ \"/Patient/\" + fhirpath(\"QuestionnaireResponse.repeat(item).where(linkId='patientId').answer.children().string\").0"
+        url: >-
+          $ "/Patient/" +
+          fhirpath("QuestionnaireResponse.repeat(item).where(linkId='patientId').answer.children().string").0
         method: PATCH
       resource:
-        resourceType: Patient
         telecom:
-        - system: 'phone'
-          use: 'mobile'
-          value: $ fhirpath("QuestionnaireResponse.repeat(item).where(linkId='phone-group').item.where(linkId='phone-number').answer.value.string").0
-        - system: 'phone'
-          use: 'home'
-          value: $ fhirpath("QuestionnaireResponse.repeat(item).where(linkId='phone-group').item.where(linkId='phone-number').answer.value.string").0
+          $as: item
+          $map: >-
+            $
+            fhirpath("QuestionnaireResponse.repeat(item).where(linkId='phone-group').answer")
+          $body:
+            use: >-
+              $
+              fhirpath("%context.item.where(linkId='phone-type').answer.value.string",item).0
+            value: >-
+              $
+              fhirpath("%context.item.where(linkId='phone-number').answer.value.string",item).0
+            system: phone
+        resourceType: Patient
+  resourceType: Bundle
+id: demo-2
+resourceType: Mapping

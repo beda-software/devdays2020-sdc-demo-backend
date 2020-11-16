@@ -6,9 +6,15 @@ item:
     type: group
     linkId: phone-group
     repeats: true
+    itemContext:
+      language: text/fhirpath
+      expression: "%LaunchPatient.telecom"
     item:
       - text: Type
         type: choice
+        initialExpression:
+            language: text/fhirpath
+            expression: 'use'
         linkId: phone-type
         answerOption:
           - value:
@@ -20,6 +26,9 @@ item:
       - text: Number
         type: string
         linkId: phone-number
+        initialExpression:
+            language: text/fhirpath
+            expression: 'value'
   - text: ID
     type: string
     linkId: patientId
