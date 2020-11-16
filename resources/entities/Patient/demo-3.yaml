@@ -1,0 +1,17 @@
+---
+resourceType: Patient
+id: demo-3
+name:
+  - given:
+      - Jane
+      - Jr.
+    family: Smith
+birthDate: "1980-01-01"
+gender: "female"
+telecom:
+  - use: Mobile
+    value: '+123456789'
+    system: phone
+  - use: Home
+    value: '+198765432'
+    system: phone
