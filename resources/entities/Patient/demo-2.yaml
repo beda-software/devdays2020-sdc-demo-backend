@@ -7,3 +7,12 @@ name:
     family: Johns
 birthDate: "1980-12-05"
 gender: "male"
+telecom:
+  - use: mobile
+    value: '+123456789'
+    system: phone
+  - use: home
+    value: '+198765432'
+    system: phone
+  - value: patient_demo@gmail.com
+    system: email

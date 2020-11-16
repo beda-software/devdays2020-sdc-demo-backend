@@ -35,7 +35,7 @@ item:
       expression: '%LaunchPatient.id'
 status: active
 mapping:
-  - id: patient-extract
+  - id: demo-1
     resourceType: Mapping
 launchContext:
   - name: LaunchPatient

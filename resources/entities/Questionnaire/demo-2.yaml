@@ -2,30 +2,24 @@
 resourceType: Questionnaire
 id: demo-2
 item:
-  - text: First Name
-    type: string
-    linkId: first-name
-    initialExpression:
-      language: text/fhirpath
-      expression: '%LaunchPatient.name.given.first()'
-  - text: Middle Name
-    type: string
-    linkId: middle-name
-    initialExpression:
-      language: text/fhirpath
-      expression: '%LaunchPatient.name.given[1]'
-  - text: Last Name
-    type: string
-    linkId: last-name
-    initialExpression:
-      language: text/fhirpath
-      expression: '%LaunchPatient.name.family.first()'
-  - text: Date of Birth
-    type: date
-    linkId: date-of-birth
-    initialExpression:
-      language: text/fhirpath
-      expression: '%LaunchPatient.birthDate'
+  - text: Phone details
+    type: group
+    linkId: phone-group
+    repeats: true
+    item:
+      - text: Type
+        type: choice
+        linkId: phone-type
+        answerOption:
+          - value:
+              string: 'Home'
+          - value:
+              string: 'Mobile'
+          - value:
+              string: 'Other'
+      - text: Number
+        type: string
+        linkId: phone-number
   - text: ID
     type: string
     linkId: patientId
@@ -35,7 +29,7 @@ item:
       expression: '%LaunchPatient.id'
 status: active
 mapping:
-  - id: patient-extract
+  - id: demo-2
     resourceType: Mapping
 launchContext:
   - name: LaunchPatient
