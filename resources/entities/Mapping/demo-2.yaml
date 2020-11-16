@@ -1,6 +1,6 @@
 ---
 resourceType: Mapping
-id: patient-extract
+id: demo-2
 body:
   type: transaction
   resourceType: Bundle
