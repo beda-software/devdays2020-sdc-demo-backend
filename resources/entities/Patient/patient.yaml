@@ -1,6 +1,6 @@
 ---
 resourceType: Patient
-id: demo-3
+id: patient
 name:
   - given:
       - Jane
